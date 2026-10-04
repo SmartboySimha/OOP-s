@@ -10,10 +10,14 @@ abstract class Bank{
 		this.name=name;
 		this.balance=bal;
 	}// setter
-	public void setBal(double bal){this.balance=bal;}
+	// public void setBal(double bal){this.balance=bal;}
     
-	// why we cant use setter here because these setter acces by any one s
-	
+	// why we can't use setter here because these setter acces by any one s
+	 // use the method of add and sub bal
+
+	 protected void getWithdrawFun(int withdraw){
+		balance=balance - withdraw;
+	 }
 	
 	
 	public void deposit(int deposit) {
@@ -37,7 +41,8 @@ class SavingsAc extends Bank{
 	public void withdraw(int withdraw)
 	{
 	   if(withdraw <= 20000  && getBal() >= withdraw) 
-		   setBal(getBal() - withdraw);   // the balance is updteds here
+		getWithdrawFun(withdraw);   
+		//setBal(getBal() - withdraw);   // the balance is updteds here
 		else 
 		System.out.println("check withdraw amount ");
 	   }
@@ -50,7 +55,8 @@ class CurrentAc extends Bank{
 	
 	public void withdraw(int withdraw) {
 	if( withdraw <100000 && getBal() > withdraw)
-		setBal(getBal() - withdraw);
+		getWithdrawFun(withdraw);   // protect acess with in a class or sub class or another pack sub class
+
 	else {
 		System.out.println("check balance");
 	}
@@ -62,6 +68,7 @@ public class Oops{
 	
 	public static void main(String[] args) {
 		Bank b=new SavingsAc(321654787894L, "narasimha" , 1);
+		
 	
 		System.out.println("Savings  AC");
 		System.out.println("Savings  AC present bal: "+b.getBal());
