@@ -67,9 +67,12 @@ class CurrentAc extends Bank{
 public class Oops{
 	
 	public static void main(String[] args) {
-		Bank b=new SavingsAc(321654787894L, "narasimha" , 1);
 		
-	
+		Scanner sc= new Scanner(System.in);
+		String acctype=sc.nextLine();
+
+	if(acctype.equalsIgnoreCase("SavingsAc")){
+		Bank b=new SavingsAc(321654787894L, "narasimha" , 1);
 		System.out.println("Savings  AC");
 		System.out.println("Savings  AC present bal: "+b.getBal());
 		System.out.println("Acc num i s: "+b.AccNum() +"\n"+ "name : "+b.Name());
@@ -78,9 +81,11 @@ public class Oops{
 		System.out.println("savings acc bal after depo : "+b.getBal());
 		b.withdraw(160);
 		System.out.println("savings acc final bal after withdraw : "+b.getBal());
-		
-		System.out.println("Current  AC");
-		b =new CurrentAc(88615141918L,"deva",9846);
+	}
+	else if(acctype.equalsIgnoreCase("CurrentAc")){
+
+			System.out.println("Current  AC");
+	Bank b =new CurrentAc(88615141918L,"deva",9846);
 		System.out.println("Acc num i s: "+b.AccNum() +"\n"+ "name : "+b.Name());
 		
 		
@@ -91,5 +96,5 @@ public class Oops{
 		b.withdraw(40);
 		System.out.println("current  acc final bal after withdraw : "+b.getBal());
 	}
-		
+}
 	}
